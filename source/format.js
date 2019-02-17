@@ -8,20 +8,18 @@ function format(array, cols) {
         return null;
     }
 
+    const strings = array.map(num => num.toString());
     const lens = new Array(cols).fill(0);
 
-    for (let i = 0; i < array.length; i++) {
-        if (lens[i % cols] < String(array[i]).length) {
-            lens[i % cols] = String(array[i]).length;
-        }
-    }
+    strings.forEach((str, i) => {
+        lens[i % cols] = Math.max(lens[i % cols], str.length);
+    });
 
-    let res = '';
-    for (let i = 0; i < array.length; i++) {
-        res += ' '.repeat(lens[i % cols] - String(array[i]).length)
-            + array[i]
-            + ((i + 1) % cols ? ' ' : '\n');
-    }
+    let res = strings.reduce((result, str, i) => {
+        let spaces = ' '.repeat(lens[i % cols] - str.length);
+        let endSymbol = (i + 1) % cols ? ' ' : '\n';
+        return result + spaces + str + endSymbol;
+    }, '');
 
     return res.slice(0, -1);
 }
