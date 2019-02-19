@@ -15,9 +15,9 @@ function format(array, cols) {
         lens[i % cols] = Math.max(lens[i % cols], str.length);
     });
 
-    let res = strings.reduce((result, str, i) => {
-        let spaces = ' '.repeat(lens[i % cols] - str.length);
-        let endSymbol = (i + 1) % cols ? ' ' : '\n';
+    const res = strings.reduce((result, str, i) => {
+        const spaces = ' '.repeat(lens[i % cols] - str.length);
+        const endSymbol = (i + 1) % cols ? ' ' : '\n';
         return result + spaces + str + endSymbol;
     }, '');
 
