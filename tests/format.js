@@ -72,6 +72,7 @@ QUnit.module('Тестируем функцию format', function () {
 		const input1 = "string";
 		const input2 = [1, 2, 3];
 		const input3 = [1, 'a', 2.3];
+		const input4 = [NaN]
 
 		const expected = null;
 
@@ -79,5 +80,7 @@ QUnit.module('Тестируем функцию format', function () {
 		assert.strictEqual(format(input1, 'cols'), expected);
 		assert.strictEqual(format(input2, 'cols'), expected);
 		assert.strictEqual(format(input3, 1), expected);
+		assert.strictEqual(format(input4, NaN), expected);
+		assert.strictEqual(format(null, undefined), expected);
 	});
 });
