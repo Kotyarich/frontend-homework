@@ -1,10 +1,10 @@
 'use strict';
 
 function format(array, cols) {
-    if (typeof cols != 'number' || Number.isNaN(cols) || !(array instanceof Array)) {
+    if (typeof cols !== 'number' || Number.isNaN(cols) || !(array instanceof Array)) {
         return null;
     }
-    if (array.some(item => typeof item != 'number' || Number.isNaN(item))) {
+    if (array.some(item => typeof item !== 'number' || Number.isNaN(item))) {
         return null;
     }
 
